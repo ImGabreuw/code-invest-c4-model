@@ -1,64 +1,49 @@
-# code-invest-c4-model
+# Code Invest C4 Model
 
-# Introduction
+### Visão Geral
 
-This project was created using [c4builder](https://adrianvlupu.github.io/C4-Builder/)
+Este repositório do GitHub contém um projeto de simulação de uma corretora de valores, com funcionalidades completas de compra e venda de ações através do home broker, visualização de indicadores financeiros via gráfico, além de outras características.
 
-Take a look at 
+### Objetivo
 
-- [PlantUml](http://plantuml.com/) creates diagrams from plain text.
+O objetivo deste projeto é fornecer uma plataforma simulada de corretora de valores que permita aos usuários realizar operações de compra e venda de ações, acompanhar os indicadores financeiros em tempo real através de gráficos e receber notificações sobre mudanças significativas no mercado de ações. O projeto é construído usando tecnologias modernas como Go, Next.js, Nest.js, React e Apache Kafka.
 
-- [Markdown](https://guides.github.com/features/mastering-markdown/) creates rich text documents from plant text.
+### Principais Características
 
-- [C4Model](https://c4model.com/) the idea behind maps of your code
+1. **Home Broker**: O projeto oferece uma interface intuitiva de home broker, permitindo que os usuários realizem operações de compra e venda de ações de forma rápida e fácil. Eles podem visualizar informações detalhadas sobre as ações, incluindo preços, volume de negociação e tendências históricas.
 
-- [C4-PlantUML](https://github.com/RicardoNiepel/C4-PlantUML) C4 syntax support for generating plantuml diagrams
+2. **Visualização de Indicadores**: O sistema utiliza gráficos interativos para exibir os principais indicadores financeiros, como preço das ações ao longo do tempo, volume de negociação, médias móveis, índices de mercado, entre outros. Os usuários podem personalizar a exibição dos gráficos e explorar diferentes períodos de tempo.
 
-- [vscode-plantuml](https://github.com/qjebbs/vscode-plantuml) plugin for visual studio code to view diagrams at design time
+3. **Notificações de Mercado**: Os usuários têm a opção de receber notificações em tempo real sobre eventos relevantes no mercado de ações. Isso pode incluir mudanças significativas nos preços das ações, anúncios de empresas, divulgação de resultados financeiros, entre outros. As notificações são entregues através de diferentes canais, como e-mail, SMS ou notificações push.
 
-Open the terminal and run the following commands to start compiling the documentation
+4. **Integração com Apache Kafka**: O projeto utiliza o Apache Kafka como sistema de mensagens para processar e transmitir dados em tempo real. Ele permite que as informações de mercado sejam atualizadas continuamente e distribuídas para os usuários de forma eficiente e escalável.
 
-```bash
-npm i -g c4builder
-c4builder
-```
+### Tecnologias Utilizadas
 
-> Note on using local images inside markdown files
->
-> Images should be placed next to the markdown file using them.
->
-> All of them will be copied over to the `docs` folder either in `/` (in the case of a single MD/PDF file) or following the same folder structure as in `src`, so make sure they have unique names.  
+O projeto faz uso das seguintes tecnologias:
 
-# Abstractions used
+- **Go**: É a linguagem de programação principal utilizada para desenvolver a lógica de negócios do projeto. Go é conhecida por sua eficiência, simplicidade e suporte para concorrência, tornando-a uma escolha adequada para aplicações de alto desempenho e escaláveis.
 
-![C4Model](https://c4model.com/img/abstractions.png)
+- **Next.js**: É um framework de desenvolvimento web em React que permite a criação de aplicações SSR (Server-Side Rendering) e SSG (Static Site Generation). Ele é usado para construir a interface do usuário da aplicação, fornecendo uma experiência interativa e responsiva.
 
-### Person
+- **Nest.js**: É um framework back-end em Node.js que facilita a criação de aplicativos escaláveis e eficientes. Ele fornece recursos como injeção de dependência, arquitetura em camadas e uma sintaxe declarativa para simplificar o desenvolvimento do servidor de aplicação.
 
-However you think about your users (as actors, roles, personas, etc), people are the various human users of your software system. 
+- **React**: É uma biblioteca JavaScript para construção de interfaces de usuário. O React é usado em conjunto com o Next.js para criar componentes reutilizáveis, gerenciar o estado da aplicação e criar uma experiência de usuário
 
-### Software System
+ dinâmica e responsiva.
 
-A software system is the highest level of abstraction and describes something that delivers value to its users, whether they are human or not. This includes the software system you are modelling, and the other software systems upon which your software system depends (or vice versa). 
+- **Apache Kafka**: É uma plataforma de streaming distribuída que permite o processamento e a transmissão de eventos em tempo real. Ele é usado para a transmissão de dados do mercado de ações, atualizações de preços e notificações para os usuários do sistema.
 
-### Container
+### Contribuição
 
-A container represents something that hosts code or data. A container is something that needs to be running in order for the overall software system to work. In real terms, a container is something like: 
+Contribuições para este projeto são bem-vindas. Se você deseja contribuir, siga as práticas recomendadas para desenvolvimento, faça fork do repositório, crie uma branch específica para sua contribuição e envie um pull request quando estiver pronto.
 
-- Server-side web application: A Java EE web application running on Apache Tomcat, an ASP.NET MVC application running on Microsoft IIS, a Ruby on Rails application running on WEBrick, a Node.js application, etc.
+Lembre-se de fornecer uma descrição clara das alterações que você está propondo e adicione testes adequados para garantir a qualidade do código.
 
-- Client-side web application: A JavaScript application running in a web browser using Angular, Backbone.JS, jQuery, etc).
+### Licença
 
-- Client-side desktop application: A Windows desktop application written using WPF, an OS X desktop application written using Objective-C, a cross-platform desktop application written using JavaFX, etc.
-- Mobile app: An Apple iOS app, an Android app, a Microsoft Windows Phone app, etc.
+Este projeto é licenciado sob a [MIT License](https://opensource.org/licenses/MIT), o que significa que você é livre para usá-lo, modificá-lo e distribuí-lo sob os termos da licença.
 
-- Server-side console application: A standalone (e.g. "public static void main") 
+### Aviso Legal
 
-- etc
-
-### Component
-
-Component
-The word "component" is a hugely overloaded term in the software development industry, but in this context a component is simply a grouping of related functionality encapsulated behind a well-defined interface. If you're using a language like Java or C#, the simplest way to think of a component is that it's a collection of implementation classes behind an interface. Aspects such as how those components are packaged (e.g. one component vs many components per JAR file, DLL, shared library, etc) is a separate and orthogonal concern. 
-
-An important point to note here is that all components inside a container typically execute in the same process space. 
+Este projeto é uma simulação e não representa uma corretora de valores real. As operações realizadas e os indicadores exibidos são apenas para fins ilustrativos. Não deve ser considerado como aconselhamento financeiro ou recomendação de investimento. Sempre consulte um profissional financeiro qualificado antes de tomar qualquer decisão de investimento.

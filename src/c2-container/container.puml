@@ -1,0 +1,21 @@
+@startuml
+!include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Context.puml
+!include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+
+Container_Boundary(stock_exchange_system, "Sistema de bolsa de valores"){
+  Container(match_algorithm, "Algoritmo de 'match'", "Go", "Responsável por encontrar o melhor contrato entre a oferta e demanda de um derterminado ativo, ou seja, a operação de 'trade'. Ela será executado em várias threads de forma assíncrono.")
+  ContainerQueue_Ext(apache_kafka, "Sistema de mensageria", "Apache Kafka", "Armazena as transações ('match' de compra e venda) no formato JSON")
+  ContainerQueue_Ext(order_channel, "Order Channel", "Channel Golang", "Recebe as ordens de compra e venda do Apache Kafka para que o algoritmo de 'match' possa criar as transações e registrá-las no 'Book'")
+  ContainerQueue_Ext(transaction_channel, "Transaction Channel", "Channel Golang", "Recebe as transações criadas pelo algoritmo de 'match' do 'Book' e as envia para o Apache Kafka para serem armazenadas")
+
+  Rel(apache_kafka, order_channel, "Ordem de compra")
+  Rel(apache_kafka, order_channel, "Ordem de venda")
+  Rel(order_channel, match_algorithm, "Envia ordem")
+
+  Rel(match_algorithm, transaction_channel, "Coleta as transações das threads")
+  Rel(transaction_channel, apache_kafka, "Envia a transação", "JSON")
+}
+
+@enduml
