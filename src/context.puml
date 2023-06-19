@@ -3,13 +3,18 @@
 
 LAYOUT_WITH_LEGEND()
 
-Person(pbc, "Personal Banking Customer", "A customer of the bank, with personal bank accounts.")
-System(ibs, "Internet Banking System", "Allows customers to view information about their bank accounts, and make payments.")
-System_Ext(es, "E-mail system", "The internal Microsoft Exchange e-mail system.")
-System_Ext(mbs, "Mainframe Banking System", "Stores all of the core banking information about customers, accounts, transactions, etc.")
+Person(investor, "Investidor")
 
-Rel(pbc, ibs, "Uses")
-Rel(es, pbc, "Sends e-mails to")
-Rel(ibs, es, "Sends e-mails", "SMTP")
-Rel(ibs, mbs, "Uses")
+System(front_end, "Front-end", "Interface de home broker para o usuário realizar as operações de compra e venda, além dos indicadores em tempo real")
+System(back_end, "Back-end", "Servidor para manipular as ordens de compra e venda do investidor")
+System_Ext(apache_kafka, "Apache Kafka", "Armazenar as ordens de compra e venda do usuário")
+System(stock_exchange, "Sistema de Bolsa de Valores", "Simular uma B3 para dar match de ofertas de compra e dendas de ativos")
+
+BiRel(investor, front_end, "Interação via navegador")
+BiRel(front_end, back_end, "Comunicação REST")
+BiRel(back_end, apache_kafka, "Comunicação via mensagens")
+BiRel(apache_kafka, stock_exchange, "Comunicação via mensagens")
+
+Rel(back_end, front_end, "Server Sent Events (SEE)")
+
 @enduml
