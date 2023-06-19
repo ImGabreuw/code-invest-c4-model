@@ -1,5 +1,3 @@
-# Code Invest
-
 ### Visão Geral
 
 Este repositório do GitHub contém um projeto de simulação de uma corretora de valores, com funcionalidades completas de compra e venda de ações através do home broker, visualização de indicadores financeiros via gráfico, além de outras características.

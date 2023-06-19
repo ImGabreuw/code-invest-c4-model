@@ -1,3 +1,7 @@
+# c1-context
+
+![diagram](https://www.plantuml.com/plantuml/svg/0/XLFBZjD04Bn7oZyqENcbtVW09qwR10Ch0gmsMH0dgsDtab7cOSt3XFqRn07n0Nn1VeoUSLPn06alLi-eghkgQtpjF5eVb1mEdWbToL0JRBrltCiyj_Xrl15-6rR1aQsCzgJzk38gnzeArAqCJSXdBwvk9Mf__twUI_JaF5-LiuZU-t6JMWy7yycNZ_VBylFDycqvBzuK7rvb5_7-bgmpEXEwPQAnbp2wIQMeZHqbnEARywIojUME9UcQ8QzZVSNrAE4zsJLM156wKGGhQtPaeK6BO22uSFXkXG5BACK3Ma07fY6BXv-7t-GYZJqr32PekIbU0ih3BmMrSI1qBIfaCGma1QoawJf5SKTfAwnsHsLJBX-5BSYsqKOdHA4MJP37yROc_P_9F1B4cVzkH5diVOODLbigTxZUiSJH91tXNJp6SHEhy87qqmCU5z9pmAkF5lRL5lM6edOHxp4sc1hfKl49PLn3iYPKiX8OCdtU6QpvhD1NsuWrQx8UpmNKKK2wGYzQuxfuf-AEP2__ViufsXZJ3mEjGD3OqWQFc-c8FNWlXfbHGNDk7VMkM2nFZ1FihuMUa-8ynJl43NzEx7FEFtjxeiTmSAwWRpO-5twr2_x7eE2ml8DiKHGN7U-QGUbN-WC0)
+
 A plataforma de simulação de corretora de valores possui uma arquitetura em camadas, onde o frontend é desenvolvido em React e Next.js, o backend em Nest.js, o sistema de bolsa de valores em Go, e o Apache Kafka é utilizado como intermediador entre o sistema de bolsa de valores e o backend, permitindo a comunicação assíncrona e em tempo real.
 
 **Frontend (React e Next.js):**
