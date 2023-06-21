@@ -4,17 +4,23 @@
 LAYOUT_WITH_LEGEND()
 
 Person(investor, "Investidor")
-
-System(front_end, "Front-end", "Interface de home broker para o usuário realizar as operações de compra e venda, além dos indicadores em tempo real")
-System(back_end, "Back-end", "Servidor para manipular as ordens de compra e venda do investidor")
 System_Ext(apache_kafka, "Apache Kafka", "Armazenar as ordens de compra e venda do usuário")
-System(stock_exchange, "Sistema de Bolsa de Valores", "Simular uma B3 para dar match de ofertas de compra e dendas de ativos")
 
-BiRel(investor, front_end, "Interação via navegador")
-BiRel(front_end, back_end, "Comunicação REST")
-BiRel(back_end, apache_kafka, "Comunicação via mensagens")
-BiRel(apache_kafka, stock_exchange, "Comunicação via mensagens")
+System_Boundary(code_invest, "Code Invest"){
+  System(front_end, "Front-end", "Interface de home broker para o usuário realizar as operações de compra e venda, além dos indicadores em tempo real")
+  System(back_end, "Back-end", "Servidor para manipular as ordens de compra e venda do investidor")
+  System(stock_exchange, "Sistema de Bolsa de Valores", "Simular uma B3 para dar match de ofertas de compra e dendas de ativos")
 
-Rel(back_end, front_end, "Server Sent Events (SEE)")
+  Rel(investor, front_end, "Faz uma negociação")
+  Rel(front_end, back_end, "Envia ordens de compra/venda e consultar dados", "REST/HTTPS")
+  Rel(front_end, investor, "Recebe a resposta")
+  Rel(back_end, apache_kafka, "Publica ordens de compra/venda")
+  Rel(apache_kafka, stock_exchange, "Consome as ordens de compra/venda")
+  Rel(stock_exchange, apache_kafka, "Publica transações")
+  Rel(apache_kafka, back_end, "Consome as transações")
+  Rel(back_end, front_end, "Notifica sobre nova transação")
+
+  Rel(back_end, front_end, "Server Sent Events (SEE)")
+}
 
 @enduml
